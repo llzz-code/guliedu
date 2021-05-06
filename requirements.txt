@@ -1,0 +1,30 @@
+asgiref @ file:///tmp/build/80754af9/asgiref_1617740417847/work
+certifi==2020.12.5
+defusedxml==0.7.1
+diff-match-patch==20200713
+Django==2.0.1
+django-crispy-forms==1.11.2
+django-formtools==2.1
+django-import-export==2.5.0
+django-ranged-response==0.2.0
+django-reversion==3.0.9
+django-simple-captcha==0.5.9
+et-xmlfile==1.0.1
+future==0.18.2
+httplib2==0.19.1
+MarkupPy==1.14
+mysqlclient==2.0.3
+odfpy==1.4.1
+openpyxl==3.0.7
+Pillow==8.2.0
+psycopg2 @ file:///C:/ci/psycopg2_1612298619396/work
+pyparsing==2.4.7
+pytz @ file:///tmp/build/80754af9/pytz_1612215392582/work
+PyYAML==5.4.1
+six==1.15.0
+sqlparse @ file:///tmp/build/80754af9/sqlparse_1602184451250/work
+tablib==3.0.0
+typing-extensions==3.7.4.3
+wincertstore==0.2
+xlrd==2.0.1
+xlwt==1.3.0

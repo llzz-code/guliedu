@@ -1,0 +1,75 @@
+{% extends 'users/usercenter-base.html' %}
+{% block title %}
+    我的收藏- 谷粒教育网
+{% endblock %}
+{% block breach %}
+    我的收藏
+{% endblock %}
+{% block right %}
+    <div class="right">
+        <div class="personal_des Releasecont">
+            <div class="head">
+                <h1>我的收藏</h1>
+            </div>
+        </div>
+        <div class="personal_des permessage">
+            <div class="head">
+                <ul class="tab_header messagehead">
+                    <li><a href="{% url 'users:user_fav_org' %}">课程机构</a></li>
+                    <li><a href="{% url 'users:user_fav_teacher' %}">授课教师 </a></li>
+                    <li class="active"><a href="{% url 'users:user_fav_course' %}">公开课程</a></li>
+                </ul>
+            </div>
+            <div class="companycenter">
+                <div class="group_list brief">
+                    {% for course in course_list %}
+                        <div class="module1_5 box">
+                            <a href="{% url 'courses:course_detail' course.id %}">
+                                <img width="214" height="190" src="/media/{{ course.image }}"/>
+                            </a>
+                            <div class="des">
+                                <a href="{% url 'courses:course_detail' course.id %}"><h2>{{ course.name }}</h2></a>
+                                <span class="fl">时长：<i class="key">{{ course.study_time }}</i></span>
+                                <span class="fr">学习人数：{{ course.study_num }}</span>
+                            </div>
+                            <div class="bottom">
+                                <span class="fl">{{ course.org_info.name }}</span>
+                                <span class="delete-group fr jsDeleteFav_course" data-favid="{{ course.id }}"></span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block myjs %}
+    {% block user %}
+
+    {% endblock %}
+<script>
+        $(function () {
+            $(".delete-group").click(function () {
+                {# prop()用来取元素自带的属性值或者设置值，attr用来取元素自定义的属性值或设置值 #}
+                let fav_id = $(this).attr("data-favid");
+                let fav_type = 2;
+                let obj = $(this);
+                $.ajax({
+                    type: "GET",
+                    url: "{% url 'operations:user_delete_love' %}",
+                    data: {
+                        "love_id": fav_id,
+                        "love_type": fav_type
+                    },
+                    success:function (callback) {
+                        if(callback.status == 'ok'){
+                            obj.parents(".module1_5").remove()
+                        }else{
+                            alert(callback.msg);
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock %}
